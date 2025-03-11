@@ -19,11 +19,11 @@ build_property.ProjectDir = C:\Users\pyVIg\Desktop\avalonia projects\style\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 
-[C:/Users/pyVIg/Desktop/avalonia projects/style/App.axaml]
+[c:/Users/pyVIg/Desktop/avalonia projects/style/App.axaml]
 build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
 
-[C:/Users/pyVIg/Desktop/avalonia projects/style/AppoinmentAdd.axaml]
+[c:/Users/pyVIg/Desktop/avalonia projects/style/AppoinmentAdd.axaml]
 build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
 
-[C:/Users/pyVIg/Desktop/avalonia projects/style/MainWindow.axaml]
+[c:/Users/pyVIg/Desktop/avalonia projects/style/MainWindow.axaml]
 build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml

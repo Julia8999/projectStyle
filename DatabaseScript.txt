@@ -1,0 +1,67 @@
+CREATE TABLE clients (
+    client_id serial primary key,
+    first_name VARCHAR(50) NOT NULL,
+    last_name VARCHAR(50) NOT NULL,
+    phone_number VARCHAR(15),
+    email VARCHAR(100),
+    date_birth DATE
+);
+
+CREATE TABLE employees (
+    employee_id serial primary key,
+    first_name VARCHAR(50) NOT NULL,
+    last_name VARCHAR(50) NOT NULL,
+    position VARCHAR(50),
+    phone_number VARCHAR(15),
+    hire_date DATE
+);
+
+CREATE TABLE services (
+    service_id serial primary key,
+    service_name VARCHAR(100) NOT NULL,
+    price DECIMAL(10, 2) NOT NULL,
+    duration INT
+);
+
+CREATE TABLE appointments (
+    appointment_id serial primary key,
+    client_id INT,
+    employee_id INT,
+    service_id INT,
+    appointment_date DATE,
+    FOREIGN KEY (client_id) REFERENCES clients(client_id),
+    FOREIGN KEY (employee_id) REFERENCES employees(employee_id),
+    FOREIGN KEY (service_id) REFERENCES services(service_id)
+);
+
+CREATE TABLE payments (
+    payment_id serial primary key,
+    appointment_id INT,
+    amount DECIMAL(10, 2) NOT NULL,
+    payment_date DATE,
+    FOREIGN KEY (appointment_id) REFERENCES appointments(appointment_id)
+);
+
+CREATE TABLE serviceCategories (
+    category_id serial primary key,
+    category_name VARCHAR(100) NOT NULL
+);
+
+CREATE TABLE serviceCategoryMapping (
+    service_id INT,
+    category_id INT,
+    PRIMARY KEY (service_id, category_id),
+    FOREIGN KEY (service_id) REFERENCES services(service_id),
+    FOREIGN KEY (category_id) REFERENCES serviceCategories(category_id)
+);
+
+CREATE TABLE reviews (
+    review_id serial primary key,
+    client_id INT,
+    service_id INT,
+    rating INT CHECK (Rating BETWEEN 1 AND 5),
+    comment TEXT,
+    review_date DATE,
+    FOREIGN KEY (client_id) REFERENCES clients(client_id),
+    FOREIGN KEY (service_id) REFERENCES services(service_id)
+);
