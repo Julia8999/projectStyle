@@ -1,0 +1,86 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="style.MainWindow"
+        Icon="/Assets/style.png"
+        Title="Style">
+        <Window.Background>
+    <LinearGradientBrush StartPoint="0,1" EndPoint="1,0">
+        <GradientStop Color="#FFA07A" Offset="0.0" />  <!-- Светлый лососевый (начало заката) -->
+        <GradientStop Color="#FA8072" Offset="0.3" />  <!-- Лососевый (более интенсивный цвет) -->
+        <GradientStop Color="#E9967A" Offset="0.6" />  <!-- Темный лососевый -->
+        <GradientStop Color="#CD5C5C" Offset="1.0" />  <!-- Индийский красный (конец заката) -->
+    </LinearGradientBrush>
+</Window.Background>
+    <Grid>
+    <Grid.RowDefinitions>
+        <RowDefinition Height="50"/>
+        <RowDefinition Height="50"/> 
+        <RowDefinition Height="*"/>
+        <RowDefinition Height="50"/>
+        <RowDefinition Height="50"/> 
+        <RowDefinition Height="*"/>
+        <RowDefinition Height="50"/>
+        <RowDefinition Height="*"/>
+    </Grid.RowDefinitions>
+    <StackPanel Orientation="Horizontal" Grid.Row="0">
+        <Button x:Name="btnAdd" Click="btnAdd_Click" Content="Добавить"/>
+        <Button x:Name="btnDel" Click="btnDel_Click" Content="Удалить"/>
+        <TextBlock VerticalAlignment="Center"> Укажите период с </TextBlock>
+        <DatePicker x:Name="dateStartFilter"/>
+        <TextBlock VerticalAlignment="Center"> по </TextBlock>
+        <DatePicker x:Name="dateEndFilter"/>
+        <Button x:Name="btnFilter" Click="btnFilter_Click" Content="Фильтровать"/>
+        <Button x:Name="btnAll" Click="btnAll_Click" Content="Показать все"/>
+        
+    </StackPanel>
+
+    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Grid.Row="1">
+        <TextBlock VerticalAlignment="Center" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center">Таблица "Записи клиентов"</TextBlock>
+    </StackPanel>
+
+    <DataGrid x:Name="dataGridAppointment" Grid.Row="2" x:CompileBindings="False" ColumnWidth="*">
+    <DataGrid.Columns>
+        <DataGridTextColumn Header="Идентификатор записи" Binding="{Binding AppointmentId}"/>
+        <DataGridTextColumn Header="Клиент" Binding="{Binding Client.LastName}"/>
+        <DataGridTextColumn Header="Мастер" Binding="{Binding Employee.LastName}"/>
+        <DataGridTextColumn Header="Услуга" Binding="{Binding Service.ServiceName}"/>
+        <DataGridTextColumn Header="Дата" Binding="{Binding AppointmentDate}"/>
+    </DataGrid.Columns>
+    </DataGrid>
+    <StackPanel Orientation="Horizontal" Grid.Row="3">
+        <TextBlock VerticalAlignment="Center" FontSize="18">Поиск:</TextBlock>
+        <TextBox x:Name="searchBox" x:CompileBindings="False" TextChanged="TextBox_TextChanged" Width="250" Height="30" Margin="10,0,0,0"/>
+    </StackPanel>
+
+    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Grid.Row="4">
+        <TextBlock VerticalAlignment="Center" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center">Таблица "Клиенты"</TextBlock>
+    </StackPanel>
+
+    <DataGrid x:Name="dataGridClient" Grid.Row="5" x:CompileBindings="False" ColumnWidth="*">
+    <DataGrid.Columns>
+        <DataGridTextColumn Header="Имя клиента" Binding="{Binding FirstName}"/>
+        <DataGridTextColumn Header="Фамилия клиента" Binding="{Binding LastName}"/>
+        <DataGridTextColumn Header="Номер телефона" Binding="{Binding PhoneNumber}"/>
+        <DataGridTextColumn Header="Электронная почта" Binding="{Binding Email}"/>
+        <DataGridTextColumn Header="Дата рождения" Binding="{Binding DateBirth}"/>
+    </DataGrid.Columns>
+    </DataGrid>
+    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Grid.Row="6">
+        <TextBlock VerticalAlignment="Center" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center">Таблица "Сотрудники"</TextBlock>
+    </StackPanel>
+
+    <DataGrid x:Name="dataGridEmployee" Grid.Row="7" x:CompileBindings="False" ColumnWidth="*">
+    <DataGrid.Columns>
+        <DataGridTextColumn Header="Имя сотрудника" Binding="{Binding FirstName}"/>
+        <DataGridTextColumn Header="Фамилия сотрудника" Binding="{Binding LastName}"/>
+        <DataGridTextColumn Header="Должность" Binding="{Binding Position}"/>
+        <DataGridTextColumn Header="Номер телефона" Binding="{Binding PhoneNumber}"/>
+        <DataGridTextColumn Header="Дата найма" Binding="{Binding HireDate}"/>
+    </DataGrid.Columns>
+    </DataGrid>
+
+    </Grid>
+</Window>
